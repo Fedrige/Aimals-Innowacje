@@ -37,5 +37,9 @@
         <members>*</members>
         <name>ApexTrigger</name>
     </types>
+    <types>
+        <members>openHours</members>
+        <name>LightningComponentBundle</name>
+    </types>
     <version>54.0</version>
 </Package>
