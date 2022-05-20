@@ -1,0 +1,15 @@
+<!--
+ - Created by Adam on 13.05.2022.
+ -->
+
+<!-- Map Component -->
+<template>
+        <template if:true={succesWithLocation}>
+                <lightning-map
+                        map-markers={mapMarkers}
+                        options={mapOptions}
+                        zoom-level="15"
+                >
+                </lightning-map>
+        </template>
+</template>

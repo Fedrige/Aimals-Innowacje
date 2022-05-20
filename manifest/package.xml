@@ -37,5 +37,9 @@
         <members>*</members>
         <name>ApexTrigger</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>LightningComponentBundle</name>
+    </types>
     <version>54.0</version>
 </Package>
