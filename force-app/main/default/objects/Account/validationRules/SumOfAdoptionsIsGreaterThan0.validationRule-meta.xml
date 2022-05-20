@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SumOfAdoptionsIsGreaterThan0</fullName>
+    <active>true</active>
+    <errorConditionFormula>SumOfAdoptions__c &lt; 0</errorConditionFormula>
+    <errorMessage>Sum of Adoptions have to be greater or equal 0!</errorMessage>
+</ValidationRule>
