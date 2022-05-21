@@ -18,6 +18,8 @@
         <members>Case-Case Layout</members>
         <members>CaseClose-Close Case Layout</members>
         <members>Contact-Contact Layout</members>
+        <members>Adoption__c-Real</members>
+        <members>Adoption__c-Virtual</members>
         <name>Layout</name>
     </types>
     <types>
