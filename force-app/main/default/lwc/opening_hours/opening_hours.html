@@ -1,0 +1,27 @@
+<template>
+        <lightning-card  title="Opening Hours">
+            <template if:true={oHours}>
+                <div class="slds-m-around_medium">
+                    <!-- Badge: basic -->
+                    <div class="slds-p-bottom_small">
+                        <template for:each={oHours} for:item="oh">
+                        <div key={oh.key} class="slds-grid slds-gutters">
+
+
+                                    <div class="slds-col slds-size_2-of-3">
+                                        {oh.key}
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-3">
+                                        {oh.value}
+                                    </div>
+
+
+                        </div>
+                            </template>
+                    </div>
+                </div>
+
+            </template>
+
+        </lightning-card>
+</template>
