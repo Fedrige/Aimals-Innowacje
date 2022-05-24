@@ -31,51 +31,130 @@ export default class openHours extends LightningElement {
     @wire(getRecord, { recordId: '$recordId', fields })
     account;
     get openHoursTimeMonday() {
-        return getFieldValue(this.account.data, OpenHoursMonday_FIELD);
+//        console.log("----------"+typeof getFieldValue(this.account.data, OpenHoursMonday_FIELD));
+
+        let tmp = getFieldValue(this.account.data, OpenHoursMonday_FIELD);
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
+
     get closeHoursTimeMonday() {
-            return getFieldValue(this.account.data, CloseHoursMonday_FIELD);
+        let tmp = getFieldValue(this.account.data, CloseHoursMonday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
 
     get openHoursTimeTuesday() {
-        return getFieldValue(this.account.data, OpenHoursTuesday_FIELD);
+        let tmp = getFieldValue(this.account.data, OpenHoursTuesday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
+
     get closeHoursTimeTuesday() {
-            return getFieldValue(this.account.data, CloseHoursTuesday_FIELD);
+        let tmp = getFieldValue(this.account.data, CloseHoursTuesday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
 
     get openHoursTimeWednesday() {
-        return getFieldValue(this.account.data, OpenHoursWednesday_FIELD);
+        let tmp = getFieldValue(this.account.data, OpenHoursWednesday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
+
     get closeHoursTimeWednesday() {
-            return getFieldValue(this.account.data, CloseHoursWednesday_FIELD);
+        let tmp = getFieldValue(this.account.data, CloseHoursWednesday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
 
     get openHoursTimeThursday() {
-        return getFieldValue(this.account.data, OpenHoursThursday_FIELD);
+        let tmp = getFieldValue(this.account.data, OpenHoursThursday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
+
     get closeHoursTimeThursday() {
-            return getFieldValue(this.account.data, CloseHoursThursday_FIELD);
+        let tmp = getFieldValue(this.account.data, CloseHoursThursday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
 
     get openHoursTimeFriday() {
-        return getFieldValue(this.account.data, OpenHoursFriday_FIELD);
+        let tmp = getFieldValue(this.account.data, OpenHoursFriday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
+
     get closeHoursTimeFriday() {
-            return getFieldValue(this.account.data, CloseHoursFriday_FIELD);
+        let tmp = getFieldValue(this.account.data, CloseHoursFriday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
 
     get openHoursTimeSaturday() {
-        return getFieldValue(this.account.data, OpenHoursSaturday_FIELD);
+        let tmp = getFieldValue(this.account.data, OpenHoursSaturday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
+
     get closeHoursTimeSaturday() {
-            return getFieldValue(this.account.data, CloseHoursSaturday_FIELD);
+        let tmp = getFieldValue(this.account.data, CloseHoursSaturday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
 
     get openHoursTimeSunday() {
-        return getFieldValue(this.account.data, OpenHoursSunday_FIELD);
+        let tmp = getFieldValue(this.account.data, OpenHoursSunday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
+
     get closeHoursTimeSunday() {
-            return getFieldValue(this.account.data, CloseHoursSunday_FIELD);
+        let tmp = getFieldValue(this.account.data, CloseHoursSunday_FIELD)
+        if(typeof tmp !== "undefined"){
+            tmp = tmp.substr(0,5);
+        }
+
+        return tmp;
     }
 }
