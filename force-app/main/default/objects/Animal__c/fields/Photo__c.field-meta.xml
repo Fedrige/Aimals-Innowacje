@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Photo__c</fullName>
     <externalId>false</externalId>
-    <formula>IMAGE(&quot;https://paczaizm.pl/content/wp-content/uploads/bazur-piesel.jpg&quot;, &quot;test&quot;, 200, 200)</formula>
+    <formula>IF( ISBLANK(URLtoFoto__c ) , IMAGE(&quot;https://upload.wikimedia.org/wikipedia/commons/9/98/Brak_zdj%C4%99cia.svg&quot;,&quot;tekst&quot;, 200, 200), IMAGE( URLtoFoto__c ,&quot;tekst&quot;, 200, 200))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Photo</label>
     <required>false</required>
