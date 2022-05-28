@@ -1,5 +1,5 @@
 public class CountingContactPointsClass {
-	public static void countPoints(Set<Id> adoptionsId){
+	public static Map<Id,Contact> countPoints(Set<Id> adoptionsId){
         Map<Id,Contact> contactsMap = new Map<Id,Contact>();
     	List<Adoption__c> adoptions=[SELECT Id,Contact__r.Id, Contact__r.SumOfPoints__c, Status__c, Amount__c FROM Adoption__c WHERE Id IN :adoptionsId];
     	for(Adoption__c adoption:adoptions){
@@ -18,6 +18,6 @@ public class CountingContactPointsClass {
             	contactsMap.put(contactToUpdate.Id,contactToUpdate);
         	}
     	}
-    	update contactsMap.values();
+    	return contactsMap;
     }
 }
