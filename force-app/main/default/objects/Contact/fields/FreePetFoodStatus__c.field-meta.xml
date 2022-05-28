@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FreePetFoodStatus__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( SumOfPoints__c = 0,IMAGE(&quot;https://e7.pngegg.com/pngimages/54/985/png-clipart-green-and-white-correct-sign-grass-angle-symbol-yellow-accept-angle-grass-thumbnail.png&quot;,&quot;tekst&quot; , 30,30),IMAGE(&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Antu_task-reject.svg/512px-Antu_task-reject.svg.png?20160706132530&quot;,&quot;tekst&quot; , 30,30) )</formula>
+    <label>Free Pet Food Status</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

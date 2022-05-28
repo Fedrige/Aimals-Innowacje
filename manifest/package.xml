@@ -33,6 +33,9 @@
     </types>
     <types>
         <members>EmailManager</members>
+        <members>CountAdoptionClass</members>
+        <members>CountingContactPointsClass</members>
+        <members>SendMailAfterAdoptionStatusChangedClass</members>
         <name>ApexClass</name>
     </types>
     <types>
