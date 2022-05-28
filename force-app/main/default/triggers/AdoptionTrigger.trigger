@@ -5,7 +5,7 @@ trigger AdoptionTrigger on Adoption__c (after insert, after update) {
             adoptionsId.add(adoptionId.Id);
         }
         CountAdoptionClass.countAndAddAdoptions(adoptionsId);
-        CountingContactPoints.countPoints(adoptionsId);
+        CountingContactPointsClass.countPoints(adoptionsId);
     }else if(Trigger.isupdate){
         for(Id adoptionId : Trigger.newMap.keySet()){
         	if(Trigger.oldMap.get(adoptionId).Status__c != Trigger.newMap.get(adoptionId).Status__c){
@@ -13,7 +13,7 @@ trigger AdoptionTrigger on Adoption__c (after insert, after update) {
         	}
     	}
         SendMailAfterAdoptionStatusChangedClass.sendMailWithSetOfAdoptionsId(adoptionsId);
-        CountingContactPoints.countPoints(adoptionsId);
+        CountingContactPointsClass.countPoints(adoptionsId);
     }else if(Trigger.isdelete){
         for(Adoption__c adoptionId : Trigger.old){
             adoptionsId.add(adoptionId.Id);
