@@ -36,6 +36,8 @@
         <members>CountAdoptionClass</members>
         <members>CountingContactPointsClass</members>
         <members>SendMailAfterAdoptionStatusChangedClass</members>
+        <members>RestMissingAnimal</members>
+        <members>RestMissingAnimalImage</members>
         <name>ApexClass</name>
     </types>
     <types>
