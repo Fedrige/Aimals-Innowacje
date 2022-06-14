@@ -1,0 +1,67 @@
+<!--
+ - Created by Adam on 11.06.2022.
+ -->
+
+<!-- Look For Animal -->
+<template>
+    <div class="slds-text-heading_large slds-m-around_large">AI:Mals</div>
+    <div class="slds-grid slds-gutters slds-m-around_large">
+        <lightning-combobox
+                name="shelter"
+                label="SHELTER"
+                class="slds-col"
+                value={value}
+                placeholder="-- Select Progress --"
+                options={shelterOptions}
+                onchange={handlePicklistShelterChange} ></lightning-combobox>
+        <lightning-combobox
+                name="breed"
+                label="BREED"
+                class="slds-col"
+                value={value}
+                placeholder="-- Select Progress --"
+                options={breedOptions}
+                onchange={handlePicklistBreedChange} ></lightning-combobox>
+        <lightning-combobox
+                name="age"
+                label="AGE"
+                class="slds-col"
+                value={value}
+                placeholder="-- Select Progress --"
+                options={ageOptions}
+                onchange={handlePicklistAgeChange} ></lightning-combobox>
+        <lightning-combobox
+                name="gender"
+                label="GENDER"
+                class="slds-col"
+                value={value}
+                placeholder="-- Select Progress --"
+                options={genderOptions}
+                onchange={handlePicklistGenderChange} ></lightning-combobox>
+        <button class="slds-button slds-button_brand">Load Image</button>
+    </div>
+    <template if:true={animalsList}>
+        <div class="slds-text-heading_large slds-m-around_large">Adoptable Pets</div>
+        <div class="slds-grid slds-gutters">
+            <template for:each={animalsList} for:item="animal">
+                <div class="slds-col slds-m-around_large slds-size_1-of-5 slds-text-align_center" key={animal.Id}>
+                    <lightning-card title={animal.Name} key={animal.Id} if:true={animal.URLtoFoto__c}>
+                        <img src={animal.URLtoFoto__c} alt="">
+                        <p slot="footer">From shelter: {animal.Account__r.Name}</p>
+                        <p slot="footer">Breed: {animal.Breed__c}</p>
+                        <p slot="footer">Age: {animal.Age__c}</p>
+                    </lightning-card>
+                    <lightning-card title={animal.Name} key={animal.Id} if:false= {animal.URLtoFoto__c}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Brak_zdj%C4%99cia.svg" alt="">
+                        <p slot="footer">From shelter: {animal.Account__r.Name} </p>
+                        <p slot="footer">Breed: {animal.Breed__c}</p>
+                        <p slot="footer">Age: {animal.Age__c}</p>
+                    </lightning-card>
+                </div>
+            </template>
+        </div>
+    </template>
+    <template if:true={error}>
+        <p>error</p>
+    </template>
+</template>

@@ -38,6 +38,7 @@
         <members>SendMailAfterAdoptionStatusChangedClass</members>
         <members>RestMissingAnimal</members>
         <members>RestMissingAnimalImage</members>
+        <members>lookForAnimalController</members>
         <name>ApexClass</name>
     </types>
     <types>
