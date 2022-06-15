@@ -11,6 +11,7 @@
         <members>Adoption__c</members>
         <members>Animal__c</members>
         <members>Missing_Animal__c</members>
+        <members>Opening_Hours__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -20,6 +21,7 @@
         <members>Contact-Contact Layout</members>
         <members>Adoption__c-Real</members>
         <members>Adoption__c-Virtual</members>
+        <members>Missing_Animal__c-Missing Animal Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -39,6 +41,9 @@
         <members>RestMissingAnimal</members>
         <members>RestMissingAnimalImage</members>
         <members>lookForAnimalController</members>
+        <members>CountAllAnimalsInShelterClass</members>
+        <members>changeStatusOfAnimalClass</members>
+        <members>unAdaptedClass</members>
         <name>ApexClass</name>
     </types>
     <types>

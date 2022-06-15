@@ -13,7 +13,7 @@ public class CountingContactPointsClass {
             	Contact contactToUpdate = new Contact();
             	contactToUpdate.Id=adoption.Contact__r.Id;
             	if(adoption.Amount__c == null )contactToUpdate.SumOfPoints__c=adoption.Contact__r.SumOfPoints__c-20;
-                else contactToUpdate.SumOfPoints__c=adoption.Contact__r.SumOfPoints__c-10;
+                //else contactToUpdate.SumOfPoints__c=adoption.Contact__r.SumOfPoints__c-10;
             	if(contactToUpdate.SumOfPoints__c<0) contactToUpdate.SumOfPoints__c=0;
             	contactsMap.put(contactToUpdate.Id,contactToUpdate);
         	}
