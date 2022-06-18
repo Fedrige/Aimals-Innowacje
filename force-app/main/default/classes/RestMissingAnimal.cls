@@ -1,22 +1,38 @@
-@RestResource(urlMapping='/MissingAnimals')
-global class RestMissingAnimal {
-	@HttpGet
-    global static List<Id> getMissingAnimals(){
-        String dayDeltaString = RestContext.request.params.get('dayDelta');
-        integer dayDelta = 0;
-        
-        if(dayDeltaString != null){
-            dayDelta = Integer.ValueOf(dayDeltaString);
+
+public with sharing class RestMissingAnimal {
+    static String calloutString = 'callout:Missing_Animal_Rest';
+
+    @AuraEnabled(cacheable=true)
+    public static List<Id> getMissingAnimals(Integer dayDelta){
+
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        List<Id> missingAnimalsIdList = new List<Id>();
+
+        if (dayDelta == null || dayDelta < 0) {
+            dayDelta = 0;
         }
-        
-        Date d = System.today() - (dayDelta-1);
-		Date ddbb = System.today() - dayDelta;
-		List<Missing_Animal__c> missingAnimalsList = [SELECT Id, Missing_Date__c From Missing_Animal__c WHERE Missing_Date__c < :d and Missing_Date__c >= :ddbb];
-        List<Id> missingAnimalsId = new List<Id>();
-        
-        for(Missing_Animal__c animal : missingAnimalsList){
-            missingAnimalsId.add(animal.Id);
-        }
-        return missingAnimalsId;
+
+        request.setEndpoint(calloutString + '?dayDelta=' + dayDelta);
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+        missingAnimalsIdList = response.getBody().replaceAll('\\[', '').replaceAll('\\]', '').replaceAll('\\"', '').split('\\,');
+
+        return missingAnimalsIdList;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static String getMissingAnimalImage(Id animalId){
+
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+
+        request.setEndpoint(calloutString + '/' + animalId);
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+
+        Blob image = response.getBodyAsBlob();
+        String imageUrl =  'data:'+response.getHeader('Content-Type')+';base64,'+EncodingUtil.base64Encode(image);
+        return imageUrl;
     }
 }
