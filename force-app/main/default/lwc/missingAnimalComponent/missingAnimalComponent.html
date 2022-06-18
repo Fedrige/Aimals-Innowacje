@@ -1,0 +1,27 @@
+
+<template>
+    <div class="slds-text-heading_large slds-m-around_large">Missing Animals</div>
+    <div class="slds-grid slds-gutters slds-m-around_large">
+        <lightning-input type="number" name="dayDelta" label="How many days would you like to search in past? Enter the value."
+                         onchange={handleDayDeltaChange} required min="0" value="0">
+        </lightning-input>
+        <button class="slds-button slds-button_success slds-m-around_large"  onclick={handleSearch}>Search</button>
+    </div>
+        <template if:true={missingAnimalImage}>
+            <div class="slds-text-heading_large slds-m-around_large">Misssing Pets</div>
+            <div class="slds-grid slds-wrap slds-align_absolute-center">
+                <template for:each={missingAnimalImage} for:item="img">
+                    <div class="slds-col slds-m-around_large slds-size_1-of-5 slds-text-align_center" key={img.key}>
+
+                        <lightning-card  >
+                            <img src={img.value} alt="">
+
+                        </lightning-card>
+
+                    </div>
+                </template>
+            </div>
+        </template>
+
+
+</template>
