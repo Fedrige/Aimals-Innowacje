@@ -155,8 +155,9 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Missing Animal</label>
     <nameField>
+        <displayFormat>Missing Animal-{0000}</displayFormat>
         <label>Missing Animal Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Missing Animals</pluralLabel>
     <searchLayouts></searchLayouts>

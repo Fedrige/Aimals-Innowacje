@@ -148,18 +148,18 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Adoption</label>
+    <label>Opening Hours</label>
     <nameField>
-        <displayFormat>Adoption-{0000}</displayFormat>
-        <label>Adoption Name</label>
+        <displayFormat>OH-{0000000}</displayFormat>
+        <label>Opening Hours Name</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Adoptions</pluralLabel>
+    <pluralLabel>Opening Hours</pluralLabel>
     <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

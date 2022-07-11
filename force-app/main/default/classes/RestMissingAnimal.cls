@@ -1,4 +1,3 @@
-
 public with sharing class RestMissingAnimal {
     static String calloutString = 'callout:Missing_Animal_Rest';
 
@@ -33,6 +32,20 @@ public with sharing class RestMissingAnimal {
 
         Blob image = response.getBodyAsBlob();
         String imageUrl =  'data:'+response.getHeader('Content-Type')+';base64,'+EncodingUtil.base64Encode(image);
+        return imageUrl;
+    }
+    
+    public static String getMissingAnimalImageRestFlow(Id animalId){
+
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+
+        request.setEndpoint(calloutString + '/' + animalId);
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+
+        Blob image = response.getBodyAsBlob();
+        String imageUrl = EncodingUtil.base64Encode(image);
         return imageUrl;
     }
 }

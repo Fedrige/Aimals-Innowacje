@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://test.salesforce.com/services/oauth2/authorize</authorizeUrl>
+    <consumerKey>3MVG954MqIw6FnnPjo5g00ZBOoolH4cZGnTdSl3RuCIP6mtt96ZNQdBSdzTFcqH.1pAPCIjrhMr7d9b7CgiSu</consumerKey>
+    <consumerSecret>1SjrDSj5p4mtsvvWRoHrvOf1HjMsANgFnhS4HaTtnfdW2WuE6k5CwxCF9+3Ob/ym4l/z+eArgmQjN/u3fX0DuXBBGPdiC2rX</consumerSecret>
+    <defaultScopes>refresh_token offline_access api</defaultScopes>
+    <friendlyName>Missing Animal</friendlyName>
+    <includeOrgIdInIdentifier>true</includeOrgIdInIdentifier>
+    <providerType>Salesforce</providerType>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://test.salesforce.com/services/oauth2/token</tokenUrl>
+</AuthProvider>
