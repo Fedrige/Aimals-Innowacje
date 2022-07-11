@@ -17,7 +17,7 @@
         <lightning-combobox
                 name="breed"
                 label="BREED"
-                class="slds-col"
+                class="slds-col breed"
                 value={value}
                 placeholder="-- Select Progress --"
                 options={breedOptions}
@@ -38,11 +38,23 @@
                 placeholder="-- Select Progress --"
                 options={genderOptions}
                 onchange={handlePicklistGenderChange} ></lightning-combobox>
-        <button class="slds-button slds-button_brand">Load Image</button>
+<!--        <lightning-file-upload-->
+<!--                label="Attach receipt"-->
+<!--                name="fileUploader"-->
+<!--                accept={acceptedFormats}-->
+<!--                record-id={myRecordId}-->
+<!--                onuploadfinished={handleUploadFinished}-->
+<!--        ></lightning-file-upload>-->
+        <lightning-input
+                type="file"
+                label="Attachment"
+                onchange={handleFilesChange}
+        >
+        </lightning-input>
     </div>
     <template if:true={animalsList}>
         <div class="slds-text-heading_large slds-m-around_large">Adoptable Pets</div>
-        <div class="slds-grid slds-gutters">
+        <div class="slds-grid slds-wrap slds-align_absolute-center">
             <template for:each={animalsList} for:item="animal">
                 <div class="slds-col slds-m-around_large slds-size_1-of-5 slds-text-align_center" key={animal.Id}>
                     <lightning-card title={animal.Name} key={animal.Id} if:true={animal.URLtoFoto__c}>

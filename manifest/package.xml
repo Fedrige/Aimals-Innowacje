@@ -12,6 +12,7 @@
         <members>Animal__c</members>
         <members>Missing_Animal__c</members>
         <members>Opening_Hours__c</members>
+        <members>ProbabilityOfBreedSetting__mdt</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -44,6 +45,10 @@
         <members>CountAllAnimalsInShelterClass</members>
         <members>changeStatusOfAnimalClass</members>
         <members>unAdaptedClass</members>
+        <members>Einstein</members>
+        <members>EinsteinForFlow</members>
+        <members>RestMissingAnimalIdsForFlow</members>
+        <members>RestMissingAnimalImageForFlow</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -53,6 +58,22 @@
     <types>
         <members>*</members>
         <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>AuthProvider</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomMetadata</name>
+    </types>
+    <types>
+        <members>CreateMissingAnimalsCase</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>NamedCredential</name>
     </types>
     <version>54.0</version>
 </Package>
