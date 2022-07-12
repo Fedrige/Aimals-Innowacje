@@ -49,6 +49,7 @@
         <members>EinsteinForFlow</members>
         <members>RestMissingAnimalIdsForFlow</members>
         <members>RestMissingAnimalImageForFlow</members>
+        <members>CreateContactFromIDCard</members>
         <name>ApexClass</name>
     </types>
     <types>
