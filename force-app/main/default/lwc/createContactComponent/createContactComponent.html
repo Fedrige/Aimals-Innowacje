@@ -1,0 +1,51 @@
+<!--
+ - Created by aniesmialek on 12/07/2022.
+ -->
+
+<!-- Create Contact Component -->
+<template>
+
+    <lightning-card>
+        <template class="spinnerek" if:false={isLoaded}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <div slot="title">
+            <h3>
+                <lightning-icon icon-name="standard:contact" size="small"></lightning-icon> Create New Contact
+            </h3>
+        </div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                <div class="slds-form-element">
+                    <lightning-input label="First Name" value={firstName} onchange={contactChangeVal}></lightning-input>
+                </div>
+            </div>
+            <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                <div class="slds-form-element">
+                    <lightning-input label="Last Name" value={lastName} onchange={contactChangeVal}></lightning-input>
+                </div>
+            </div>
+            <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                <div class="slds-form-element">
+                    <lightning-input type="date" label="Birth Date" value={bday} onchange={contactChangeVal}></lightning-input>
+                </div>
+            </div>
+            <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                <div class="slds-form-element">
+                    <lightning-input label="Email" value={emailId} onchange={contactChangeVal} ></lightning-input>
+                </div>
+            </div>
+            <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                <div class="slds-form-element slds-p-top_large ">
+                    <lightning-button label="Create Contact Record" variant="brand" onclick={insertContactAction}></lightning-button>
+                </div>
+            </div>
+            <lightning-input
+                    type="file"
+                    label="Attachment"
+                    onchange={handleFilesChange}
+            >
+            </lightning-input>
+        </div>
+    </lightning-card>
+</template>

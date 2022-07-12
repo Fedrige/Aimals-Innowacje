@@ -5,6 +5,7 @@ import getBreedNames from '@salesforce/apex/lookForAnimalController.getBreedName
 import getAge from '@salesforce/apex/lookForAnimalController.getAge'
 import getAnimal from '@salesforce/apex/lookForAnimalController.getAnimal'
 import getBreedOfAnimal from '@salesforce/apex/Einstein.getBreedOfAnimal'
+import getOCRFromImage from '@salesforce/apex/CreateContactFromIDCard.getOCRFromImage'
 
 
 export default class LookForAnimal extends LightningElement {
@@ -23,6 +24,8 @@ export default class LookForAnimal extends LightningElement {
     fileData;
     @api
     myRecordId;
+    @track labels = [];
+    @track tab = [];
 
     @wire(getAnimal, {shelterValue: '$shelterValue', breedValue: '$breedValue', ageValue: '$ageValue', genderValue: '$genderValue'})
     wiredAnimals({error, data}){
@@ -95,45 +98,30 @@ export default class LookForAnimal extends LightningElement {
 
     }
 
-    handleFilesChange(event){
-        const file = event.detail.files[0]
-        console.log(file)
-        const reader = new FileReader();
-        reader.onload =()=>{
-            const Base64 = reader.result.split(',')[1];
+     handleFilesChange(event){
+         const file = event.detail.files[0]
+         console.log(file)
+         const reader = new FileReader();
+         reader.onload =()=>{
+             const Base64 = reader.result.split(',')[1];
 
-            //this.breedValue = getBreedOfAnimal(base64)
-            getBreedOfAnimal({strBase64: Base64}).then(result =>{
-                const pickListBreed = this.template.querySelector('.breed')
-                if (pickListBreed){
-                    pickListBreed.value = result
-                }
-                this.breedValue = result
-                console.log(result)
-            })
-            this.fileData = {
-                'filename':file.name,
-                'base64':Base64,
-                'recordId':this.myRecordId
-            }
-            console.log(this.fileData)
-        }
-        reader.readAsDataURL(file)
-    }
+             //this.breedValue = getBreedOfAnimal(base64)
+             getBreedOfAnimal({strBase64: Base64}).then(result =>{
+                 const pickListBreed = this.template.querySelector('.breed')
+                 if (pickListBreed){
+                     pickListBreed.value = result
+                 }
+                 this.breedValue = result
+                 console.log(result)
+             })
+             this.fileData = {
+                 'filename':file.name,
+                 'base64':Base64,
+                 'recordId':this.myRecordId
+             }
+             console.log(this.fileData)
+         }
+         reader.readAsDataURL(file)
+     }
 
-
-//function imageUploaded(imageToConvert) {
-//    var file = imageToConvert;
-//
-//    var reader = new FileReader();
-//
-//    reader.onload = function () {
-//        this.base64String = reader.result.replace('data:', '')
-//            .replace(/^.+,/, '');
-//
-//
-//        console.log(this.base64String);
-//    }
-//    reader.readAsDataURL(file);
-//}
 }

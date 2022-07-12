@@ -13,15 +13,11 @@ public class EinsteinForFlow {
         Integer thresholdValue = (Integer)ProbabilityOfBreedSetting__mdt.getInstance('prob').ProbabilityThreshold__c;
         Double probability = einstein.probabilities.get(0).probability;
         if (thresholdValue > (Integer)(probability * 100)) {
-            System.debug('prob ' + probability);
-            System.debug('prob ' + (Integer)(probability * 100));
-            System.debug('nie przeszlo ' + thresholdValue);
             return null;
         }
         
         String breed = einstein.probabilities.get(0).label;
         listOfOneBreed.add(breed);
-        System.debug('przeszlo');
         return listOfOneBreed;
     }
 }
