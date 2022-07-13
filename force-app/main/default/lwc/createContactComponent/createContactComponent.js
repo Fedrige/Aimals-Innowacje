@@ -74,8 +74,10 @@ export default class ContactForm extends LightningElement {
 
             //this.breedValue = getBreedOfAnimal(base64)
             getOCRFromImage({strBase64: Base64}).then(result => {
-                this.lastName = result[0]
-                this.firstName = result[1]
+                 this.lastName = result[0]
+                 this.firstName = result[1]
+                 this.bday = result[2]
+                console.log(result)
                 this.isLoaded = true;
             })
             this.fileData = {
