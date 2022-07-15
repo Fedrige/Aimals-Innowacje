@@ -14,4 +14,16 @@ public class Einstein {
         System.debug(einstein);
         return probability;
     }
+
+    @AuraEnabled(cacheable=true)
+    public static einsteinplay.Einstein_PredictionResult getOCRFromPDF(String strBase64) {
+        String sampleId = '';
+        einsteinplay.Einstein_PredictionService einsteinService = new einsteinplay.Einstein_PredictionService(
+                einsteinplay.Einstein_PredictionService.Types.IMAGE
+        );
+        einsteinplay.Einstein_PredictionResult einstein = new einsteinplay.Einstein_PredictionResult();
+        einstein = einsteinService.predictOcrBase64('OCRModel', strBase64, 'contact', sampleId);
+
+        return einstein;
+    }
 }

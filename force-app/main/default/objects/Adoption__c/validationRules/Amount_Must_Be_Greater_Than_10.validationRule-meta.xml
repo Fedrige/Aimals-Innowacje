@@ -2,6 +2,6 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Amount_Must_Be_Greater_Than_10</fullName>
     <active>true</active>
-    <errorConditionFormula>Amount__c &lt; 10</errorConditionFormula>
+    <errorConditionFormula>(Amount__c &lt; 10  || ISNULL(Amount__c )) &amp;&amp;  RecordType.Name == &apos;Virtual&apos;</errorConditionFormula>
     <errorMessage>Amount must be greater than 10</errorMessage>
 </ValidationRule>
