@@ -3,34 +3,28 @@ public class CreateContactFromIDCard {
     public static final Integer NOT_IMPORTANT = 0;
     public static final Integer NAME = 1;
     public static final Integer SURNAME = 2;
-    public static final Integer BIRTH_DATE = 3;
 
     private static List<String> getPersonalDataFromMap(Map<Integer,String> dataMap, List<Integer> sortedBoundingBoxYPos) {
         Integer dataFlag = 0;
         String namePattern = '(?i).*?[ijl]?[mn][ijl][o0gq][mn][oa]?.*';
         String surnamePattern = '(?i).*?[nm][o0a][zs]?w?is[kh][oa].*';
         String birthDatePattern = '.*?([\\dOIliZASCbdPoQ]{2}[\\.\\-\\,\\:\\;\\/][\\dOIliZASCbdPoQ]{2}[\\.\\,\\-\\:\\;\\/][\\dOIliZASCbdPoQ]{4}).*';
+        String documentNumberPattern = '\\w{3}\\s?\\d{6}';
         List<String> personalData = new List<String>();
         
         for (Integer boundingBoxYPos: sortedBoundingBoxYPos) {
             String data = dataMap.get(boundingBoxYPos);
-            system.debug(data);
             if (dataFlag != NOT_IMPORTANT) {
                 personalData.add(data.substring(0,1) + data.substring(1).toLowerCase());
                 dataFlag = NOT_IMPORTANT;
             }
 
             if (Pattern.matches(namePattern, data)) {
-                //if(personalData.size() == 0){
-                    dataFlag = NAME;
-                //}
+                dataFlag = NAME;
             } else if (Pattern.matches(surnamePattern, data)) {
-                //if(personalData.size() == 1){
-                    dataFlag = SURNAME;
-                //}
+                dataFlag = SURNAME;
             } else if(Pattern.matches(birthDatePattern, data)){
                 data = data.replaceAll(birthDatePattern, '$1');
-                System.debug('DATAAAA::: ' + data);
  				data = data
                         .replaceAll('[\\.\\-\\,\\:\\;\\/]', '-')
                         .replaceAll('O', '0')
@@ -40,22 +34,15 @@ public class CreateContactFromIDCard {
                         .replaceAll('S', '5')
                         .replaceAll('[Cb]', '6')
                         .replaceAll('[dPoq]', '8');
-                
                 String[] dataParts = data.split('-');
-
-                System.debug(dataParts);
-
                 String parsedData = dataParts[2] + '-' + dataParts[1] + '-' + dataParts[0];
                 Date birthDate = Date.valueOf(parsedData);
-
-                System.debug('data: ' + birthDate);
-                System.debug('data today: ' + Date.today());
-
                 if (birthDate < Date.today()) {
-                    personalData.add(parsedData.replaceAll('-', '/'));
-                    System.debug('po if: ' + data);
+                    personalData.add(parsedData);
                 }
-
+            } else if (Pattern.matches(documentNumberPattern, data)) {
+                data = data.replaceAll(' ', '');
+                personalData.add(data);
             }
         }
         
@@ -81,9 +68,7 @@ public class CreateContactFromIDCard {
             sortedBoundingBoxYPos.add(eins.boundingBox.minY);
         }
         sortedBoundingBoxYPos.sort();
-        
-        
-        //system.debug(labelsMap);
+
         return getPersonalDataFromMap(labelsMap, sortedBoundingBoxYPos);
     }
 }

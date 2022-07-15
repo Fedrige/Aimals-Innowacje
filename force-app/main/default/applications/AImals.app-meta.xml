@@ -18,5 +18,6 @@
     <tabs>standard-Contact</tabs>
     <tabs>standard-Case</tabs>
     <tabs>Create_New_Contact</tabs>
+    <tabs>Create_Adoption</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

@@ -18,6 +18,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CreateAdoptionFromOCRForm</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CreateContactFromIDCard</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -635,6 +639,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.Title</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.idCardNumber__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

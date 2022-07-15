@@ -9,18 +9,19 @@ import conFirstName from '@salesforce/schema/Contact.FirstName';
 import conLastName from '@salesforce/schema/Contact.LastName';
 import conBday from '@salesforce/schema/Contact.Birthdate';
 import conEmail from '@salesforce/schema/Contact.Email';
+import conIDCard from '@salesforce/schema/Contact.idCardNumber__c';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getOCRFromImage from '@salesforce/apex/CreateContactFromIDCard.getOCRFromImage'
+import {NavigationMixin} from "lightning/navigation";
 
-export default class ContactForm extends LightningElement {
+export default class ContactForm extends NavigationMixin(LightningElement) {
     firstName = '';
     lastName = '';
     bday= '';
     emailId='';
+    IDCardNumber = '';
     isLoaded = true;
     contactChangeVal(event) {
-        console.log(event.target.label);
-        console.log(event.target.value);
         if(event.target.label=='First Name'){
             this.firstName = event.target.value;
         }
@@ -33,14 +34,17 @@ export default class ContactForm extends LightningElement {
         if(event.target.label=='Email'){
             this.emailId = event.target.value;
         }
+        if(event.target.label=='ID Card Number'){
+            this.IDCardNumber = event.target.value;
+        }
     }
     insertContactAction(){
-        console.log(this.selectedAccountId);
         const fields = {};
         fields[conFirstName.fieldApiName] = this.firstName;
         fields[conLastName.fieldApiName] = this.lastName;
         fields[conBday.fieldApiName] = this.bday;
         fields[conEmail.fieldApiName] = this.emailId;
+        fields[conIDCard.fieldApiName] = this.IDCardNumber;
         const recordInput = { apiName: conObject.objectApiName, fields };
         createRecord(recordInput)
             .then(contactobj=> {
@@ -52,6 +56,14 @@ export default class ContactForm extends LightningElement {
                         variant: 'success',
                     }),
                 );
+                this[NavigationMixin.Navigate]({
+                    type: 'standard__recordPage',
+                    attributes: {
+                        recordId: contactobj.id,
+                        objectApiName: 'Contact',
+                        actionName: 'view'
+                    }
+                });
             })
             .catch(error => {
                 this.dispatchEvent(
@@ -67,17 +79,14 @@ export default class ContactForm extends LightningElement {
     handleFilesChange(event) {
         this.isLoaded = false
         const file = event.detail.files[0]
-        console.log(file)
         const reader = new FileReader();
         reader.onload = () => {
             const Base64 = reader.result.split(',')[1];
-
-            //this.breedValue = getBreedOfAnimal(base64)
             getOCRFromImage({strBase64: Base64}).then(result => {
-                 this.lastName = result[0]
-                 this.firstName = result[1]
-                 this.bday = result[2]
-                console.log(result)
+                this.lastName = result[0]
+                this.firstName = result[1]
+                this.bday = result[2]
+                this.IDCardNumber = result[3]
                 this.isLoaded = true;
             })
             this.fileData = {
@@ -85,7 +94,6 @@ export default class ContactForm extends LightningElement {
                 'base64': Base64,
                 'recordId': this.myRecordId
             }
-            console.log(this.fileData)
         }
         reader.readAsDataURL(file)
     }

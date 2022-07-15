@@ -50,6 +50,7 @@
         <members>RestMissingAnimalIdsForFlow</members>
         <members>RestMissingAnimalImageForFlow</members>
         <members>CreateContactFromIDCard</members>
+        <members>CreateAdoptionFromOCRForm</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -75,6 +76,19 @@
     <types>
         <members>*</members>
         <name>NamedCredential</name>
+    </types>
+    <types>
+        <members>Contact.DuplicateContactIdCardNumber</members>
+        <name>DuplicateRule</name>
+    </types>
+    <types>
+        <members>Account.SumOfAdoptionsIsGreaterThan0</members>
+        <members>Adoption__c.Amount_Must_Be_Greater_Than_10</members>
+        <name>ValidationRule</name>
+    </types>
+    <types>
+        <members>Contact.DuplicateContactIdCardNumber_matching_rule</members>
+        <name>MatchingRule</name>
     </types>
     <version>54.0</version>
 </Package>

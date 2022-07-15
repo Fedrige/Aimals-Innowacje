@@ -1,8 +1,3 @@
-<!--
- - Created by aniesmialek on 12/07/2022.
- -->
-
-<!-- Create Contact Component -->
 <template>
 
     <lightning-card>
@@ -11,49 +6,49 @@
         </template>
         <div slot="title">
             <h3>
-                <lightning-icon icon-name="standard:contact" size="small"></lightning-icon> Create New Contact
+                <lightning-icon icon-name="standard:contact" size="small"></lightning-icon> Create New Adoption
             </h3>
         </div>
         <div class="slds-grid slds-wrap">
             <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
                 <div class="slds-form-element">
-                    <lightning-input label="First Name" value={firstName} onchange={contactChangeVal}></lightning-input>
+                    <lightning-input label="First Name" value={firstName} disabled={isDisabled} onchange={adoptionChangeVal}></lightning-input>
                 </div>
             </div>
             <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
                 <div class="slds-form-element">
-                    <lightning-input label="Last Name" value={lastName} onchange={contactChangeVal}></lightning-input>
+                    <lightning-input label="Last Name" value={lastName} disabled={isDisabled} onchange={adoptionChangeVal}></lightning-input>
                 </div>
             </div>
             <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
                 <div class="slds-form-element">
-                    <lightning-input type="date" label="Birth Date" value={bday} onchange={contactChangeVal}></lightning-input>
+                    <lightning-input label="Animal Name" value={animalName} onchange={adoptionChangeVal}></lightning-input>
                 </div>
             </div>
             <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
                 <div class="slds-form-element">
-                    <lightning-input label="Email" value={emailId} onchange={contactChangeVal} ></lightning-input>
+                    <lightning-input label="Adoption Type" value={adoptionType} onchange={adoptionChangeVal}></lightning-input>
                 </div>
             </div>
             <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
                 <div class="slds-form-element">
-                    <lightning-input label="ID Card Number" value={IDCardNumber} onchange={contactChangeVal} ></lightning-input>
+                    <lightning-input label="Amount" value={amount} type="number" disabled={isReal} formatter="currency" onchange={adoptionChangeVal} ></lightning-input>
                 </div>
             </div>
             <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
-            <lightning-input
-                    type="file"
-                    label="Attachment"
-                    onchange={handleFilesChange}
-            >
-            </lightning-input>
+                <div class="slds-form-element">
+                    <lightning-input
+                            type="file"
+                            label="Attachment"
+                            onchange={handleFilesChange}
+                    ></lightning-input>
+                </div>
             </div>
             <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
                 <div class="slds-form-element slds-p-top_large ">
-                    <lightning-button label="Create Contact Record" variant="brand" onclick={insertContactAction}></lightning-button>
+                    <lightning-button label="Create Adoption" variant="brand" onclick={insertAdoptionAction}></lightning-button>
                 </div>
             </div>
-
         </div>
     </lightning-card>
 </template>
